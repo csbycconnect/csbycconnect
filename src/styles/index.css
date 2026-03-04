@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --c-dark-blue: #0A192F;
+  /* Matching the deep blue from image */
+  --c-white: #fff9db;
+  --c-black: #000000;
+  --c-yellow: #f7d000;
+
+  --font-serif: 'Playfair Display', serif;
+  /* Used for Article Titles & Logos */
+  --font-mono: 'Space Mono', monospace;
+  /* Used for buttons, metadata, nav */
+
+  /* The signature brutalist shadow from the reference image */
+  --shadow-offset: 8px;
+  --box-shadow-main: var(--shadow-offset) var(--shadow-offset) 0px var(--c-black);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--c-dark-blue);
+  color: var(--c-black);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+  padding: 2rem;
+  min-height: 100vh;
+  /* Add the background grid/shapes if possible later, for now solid color */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Base structural blocks - white with thick black border and black shadow */
+.brutal-block {
+  background-color: var(--c-white);
+  border: 2px solid var(--c-black);
+  /* The overarching white containers have a white shadow with black border in the image */
+  box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.1);
+}
+
+/* For elements inside containers (like buttons, inner cards) */
+.inner-block {
+  background-color: var(--c-white);
+  border: 2px solid var(--c-black);
+  box-shadow: 6px 6px 0px var(--c-black);
+}
+
+.brutal-btn {
+  display: inline-block;
+  background-color: var(--c-white);
+  color: var(--c-black);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--c-black);
+  box-shadow: 6px 6px 0px var(--c-black);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.brutal-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px var(--c-black);
+}
+
+.brutal-btn:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px var(--c-black);
+}
+
+/* Section styling */
+section {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+.serif-heading {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--c-black);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+}

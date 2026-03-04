@@ -1,0 +1,160 @@
+/* Blog Page Specific Styles */
+
+.blog-page-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 80vh;
+}
+
+.blog-page-header {
+    margin-bottom: 2rem;
+}
+
+.blog-page-header h1 {
+    font-size: 3rem;
+    color: var(--c-white);
+    margin-bottom: 0.5rem;
+}
+
+.blog-list-container {
+    height: 100%;
+    width: 100%;
+}
+
+.blog-list-scrollarea {
+    /* No fixed max-height, letting it grow or use page scroll */
+    width: 100%;
+}
+
+/* Scrollbar hiding logic ported from Tailwind */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Individual animated wrapper */
+.blog-animated-item {
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+/* Blog Card Styles Matching the Screenshot */
+.blog-card {
+    background-color: transparent; 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.blog-card:hover {
+    background-color: rgba(255, 255, 255, 0.03); /* slight highlight on hover */
+}
+
+/* Card Header */
+.blog-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.blog-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #0d2142; /* fallback dark background */
+}
+
+.blog-meta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.blog-author {
+    color: var(--c-white);
+    font-size: 0.85rem;
+}
+
+.blog-date-time {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bullet {
+    font-size: 0.6rem;
+}
+
+.blog-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 0;
+}
+
+/* Card Content */
+.blog-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.blog-title {
+    color: var(--c-white);
+    font-size: 1.8rem;
+    font-weight: normal; /* The serif in the screenshot looks relatively unweighted */
+}
+
+.blog-excerpt {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    font-family: inherit; /* Inheriting standard font */
+    line-height: 1.6;
+}
+
+/* Card Footer */
+.blog-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* The thin separator line */
+}
+
+.blog-footer-stats {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--c-white);
+    font-size: 0.85rem;
+}
+
+.blog-like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 0;
+    transition: transform 0.2s;
+}
+
+.blog-like-btn:hover {
+    transform: scale(1.1);
+}
