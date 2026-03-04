@@ -30,11 +30,6 @@ body {
   line-height: 1.5;
   padding: 2rem;
   min-height: 100vh;
-  /* Add the background grid/shapes if possible later, for now solid color */
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
 }
 
 /* Base structural blocks - white with thick black border and black shadow */

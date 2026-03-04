@@ -22,6 +22,7 @@ export default function Navbar() {
                 <div className="nav-links">
                     <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
                     <Link to="/blogs" className={location.pathname.startsWith('/blogs') ? 'active' : ''}>Blog</Link>
+                    <Link to="/gallery" className={location.pathname.startsWith('/gallery') ? 'active' : ''}>Gallery</Link>
                     <a href="#">CS-Connect</a>
                 </div>
 

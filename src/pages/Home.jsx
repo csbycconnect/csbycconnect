@@ -5,6 +5,7 @@ import Footer from '../components/layout/Footer';
 import ArticleList from '../components/home/ArticleList';
 import WelcomeHero from '../components/home/WelcomeHero';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
+import ShuffleText from '../components/shared/ShuffleText';
 import '../styles/index.css';
 import '../styles/components.css';
 
@@ -29,7 +30,7 @@ export default function Home() {
                         {/* Read More Blogs Link */}
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2rem' }}>
                             <Link to="/blogs" className="explore-btn" style={{ textDecoration: 'none' }}>
-                                READ MORE &rarr;
+                                <ShuffleText text="READ MORE →" />
                             </Link>
                         </div>
                     </AnimateOnScroll>
@@ -51,7 +52,7 @@ export default function Home() {
                                         <p style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', marginBottom: '2.5rem', fontWeight: '400', lineHeight: '1.6' }}>
                                             We curate the latest happenings, technological trends, and insightful commentary straight from the academic core. Our aim is clarity over noise, documentation over speculation.
                                         </p>
-                                        <a href="#connect" className="explore-btn">INQUIRE NOW</a>
+                                        <a href="#connect" className="explore-btn"><ShuffleText text="INQUIRE NOW" /></a>
                                     </div>
                                     <div style={{ width: '100%', aspectRatio: '1/1', border: '2px solid var(--c-black)', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0f0f0', position: 'relative' }}>
                                         {/* Striped placeholder patterned background */}
@@ -145,7 +146,7 @@ export default function Home() {
                                             <label style={{ fontFamily: 'var(--font-mono)', fontWeight: '700', textTransform: 'uppercase' }}>Message</label>
                                             <textarea rows={4} placeholder="Your message here..." style={{ padding: '1rem', border: '2px solid var(--c-black)', fontFamily: 'var(--font-mono)', backgroundColor: '#f9f9f9', outline: 'none', resize: 'vertical' }}></textarea>
                                         </div>
-                                        <button type="button" className="explore-btn" style={{ alignSelf: 'flex-start', marginTop: '1rem' }}>SEND TRANSMISSION</button>
+                                        <button type="button" className="explore-btn" style={{ alignSelf: 'flex-start', marginTop: '1rem' }}><ShuffleText text="SEND TRANSMISSION" /></button>
                                     </form>
 
                                 </div>

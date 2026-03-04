@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
+import ShuffleText from '../components/shared/ShuffleText';
 
 export default function Login() {
     const [tab, setTab] = useState('student'); // 'student' | 'admin'
@@ -107,7 +108,7 @@ export default function Login() {
                                         <a href="#" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#555', textDecoration: 'underline' }}>Forgot password?</a>
                                     </div>
                                     <button type="submit" style={submitBtnStyle}>
-                                        Login as Student →
+                                        <ShuffleText text="Login as Student →" />
                                     </button>
                                     <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#555', textAlign: 'center' }}>
                                         No account? <a href="#" style={{ color: 'var(--c-black)', fontWeight: 700 }}>Contact the editorial board</a>
@@ -173,7 +174,7 @@ export default function Login() {
                                         <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#888' }}>Issued by the ByteBoard editorial team.</span>
                                     </div>
                                     <button type="submit" style={{ ...submitBtnStyle, backgroundColor: 'var(--c-black)', color: 'var(--c-yellow)', boxShadow: '6px 6px 0 var(--c-yellow)' }}>
-                                        Login as Admin →
+                                        <ShuffleText text="Login as Admin →" />
                                     </button>
                                 </form>
                             )}

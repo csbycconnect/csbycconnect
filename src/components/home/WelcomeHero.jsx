@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/components.css';
-import FloatingLines from '../shared/FloatingLines';
 import StaggeredMenu from '../shared/StaggeredMenu';
+import ShuffleText from '../shared/ShuffleText';
+import FloatingLines from '../shared/FloatingLines';
 
 export default function WelcomeHero() {
     return (
@@ -13,6 +13,7 @@ export default function WelcomeHero() {
                     {/* Staggered Menu — top-right of the hero */}
                     <StaggeredMenu />
 
+
                     {/* Background Floating Lines */}
                     <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, pointerEvents: 'none' }}>
                         <FloatingLines
@@ -23,7 +24,7 @@ export default function WelcomeHero() {
                             bendStrength={-0.5}
                             interactive={true}
                             parallax={true}
-                            linesGradient={['#ffffff', '#007BFF', '#f7d000']} // White, blue, yellow
+                            linesGradient={['#ffffff', '#007BFF', '#f7d000']}
                         />
                     </div>
 
@@ -37,7 +38,7 @@ export default function WelcomeHero() {
                             Where logic meets narrative.
                         </p>
                         <a
-                            href="#connect"
+                            href="/write-for-us"
                             style={{
                                 display: 'inline-block',
                                 fontFamily: 'var(--font-mono)',
@@ -57,7 +58,7 @@ export default function WelcomeHero() {
                             onMouseEnter={e => { e.currentTarget.style.transform = 'translate(2px,2px)'; e.currentTarget.style.boxShadow = '4px 4px 0 var(--c-black)'; }}
                             onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '6px 6px 0 var(--c-black)'; }}
                         >
-                            Write for Us →
+                            <ShuffleText text="Write for Us →" />
                         </a>
                         <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--c-white)', fontWeight: 700, alignItems: 'center' }}>
                             <span style={{ borderBottom: '2px solid var(--c-white)', paddingBottom: '4px' }}>EXPLORE</span>

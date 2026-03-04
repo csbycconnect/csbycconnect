@@ -6,13 +6,19 @@ import Events from './pages/Events';
 import Calendar from './pages/Calendar';
 import Favorites from './pages/Favorites';
 import Login from './pages/Login';
+import Gallery from './pages/Gallery';
+import WriteForUs from './pages/WriteForUs';
 import ByteboardLoader from './components/shared/ByteboardLoader';
+import GlobalBackground from './components/layout/GlobalBackground';
 
 function App() {
     const [loading, setLoading] = useState(true);
 
     return (
         <>
+            {/* Fixed full-viewport animated background — z-index 0, pointer-events none */}
+            <GlobalBackground />
+
             {/* Website always rendered underneath */}
             <Router>
                 <Routes>
@@ -22,6 +28,8 @@ function App() {
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/favorites" element={<Favorites />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/write-for-us" element={<WriteForUs />} />
                 </Routes>
             </Router>
 

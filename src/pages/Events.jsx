@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
+import ShuffleText from '../components/shared/ShuffleText';
 
 const events = [
     {
@@ -118,7 +119,7 @@ export default function Events() {
                                             border: '2px solid var(--c-black)', boxShadow: '4px 4px 0 var(--c-yellow)',
                                             padding: '0.6rem 1.25rem', cursor: 'pointer',
                                         }}>
-                                            Learn More →
+                                            <ShuffleText text="Learn More →" />
                                         </button>
                                     </div>
                                 </div>

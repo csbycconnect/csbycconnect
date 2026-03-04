@@ -32,9 +32,45 @@
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
+
 .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Brutalist themed scrollbar for the blog list */
+.blog-list-scrollarea {
+    scrollbar-width: thin;
+    /* Firefox: thin width */
+    scrollbar-color: #f7d000 #0A192F;
+    /* Firefox: thumb track */
+}
+
+.blog-list-scrollarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blog-list-scrollarea::-webkit-scrollbar-track {
+    background: #0A192F;
+    border-left: 2px solid #000;
+}
+
+.blog-list-scrollarea::-webkit-scrollbar-thumb {
+    background: #f7d000;
+    border: 2px solid #000;
+    border-radius: 0;
+    /* brutalist — no rounded corners */
+    min-height: 40px;
+}
+
+.blog-list-scrollarea::-webkit-scrollbar-thumb:hover {
+    background: #e6c200;
+}
+
+.blog-list-scrollarea::-webkit-scrollbar-corner {
+    background: #0A192F;
 }
 
 /* Individual animated wrapper */
@@ -45,17 +81,22 @@
 
 /* Blog Card Styles Matching the Screenshot */
 .blog-card {
-    background-color: transparent; 
-    border: 1px solid rgba(255, 255, 255, 0.4); 
+    background-color: #0d2240;
+    /* solid — blocks particle canvas behind it */
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .blog-card:hover {
-    background-color: rgba(255, 255, 255, 0.03); /* slight highlight on hover */
+    background-color: #102a50;
+    /* slightly lighter on hover */
+    border-color: var(--c-yellow);
+    box-shadow: 4px 4px 0 var(--c-yellow);
 }
 
 /* Card Header */
@@ -76,7 +117,8 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: #0d2142; /* fallback dark background */
+    background-color: #0d2142;
+    /* fallback dark background */
 }
 
 .blog-meta-text {
@@ -120,13 +162,15 @@
 .blog-title {
     color: var(--c-white);
     font-size: 1.8rem;
-    font-weight: normal; /* The serif in the screenshot looks relatively unweighted */
+    font-weight: normal;
+    /* The serif in the screenshot looks relatively unweighted */
 }
 
 .blog-excerpt {
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.95rem;
-    font-family: inherit; /* Inheriting standard font */
+    font-family: inherit;
+    /* Inheriting standard font */
     line-height: 1.6;
 }
 
@@ -136,7 +180,8 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15); /* The thin separator line */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    /* The thin separator line */
 }
 
 .blog-footer-stats {

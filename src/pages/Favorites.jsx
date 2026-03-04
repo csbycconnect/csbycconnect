@@ -3,6 +3,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
 import { Heart } from 'lucide-react';
+import ShuffleText from '../components/shared/ShuffleText';
 
 export default function Favorites() {
     return (
@@ -62,7 +63,7 @@ export default function Favorites() {
                                         padding: '0.65rem 1.25rem',
                                     }}
                                 >
-                                    Browse Articles →
+                                    <ShuffleText text="Browse Articles →" />
                                 </a>
                                 <a
                                     href="/login"
@@ -74,7 +75,7 @@ export default function Favorites() {
                                         padding: '0.65rem 1.25rem',
                                     }}
                                 >
-                                    Login
+                                    <ShuffleText text="Login" />
                                 </a>
                             </div>
                         </div>
