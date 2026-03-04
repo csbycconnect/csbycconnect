@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 // ─── Default Items ───────────────────────────────────────────────────────────
 const DEFAULT_ITEMS = [
-    { label: 'Home', href: '/', isRoute: true },
-    { label: 'Blogs', href: '/blogs', isRoute: true },
-    { label: 'About', href: '#about', isRoute: false },
-    { label: 'Connect', href: '#connect', isRoute: false },
+    { label: 'Events', href: '/events', isRoute: true },
+    { label: 'Calendar', href: '/calendar', isRoute: true },
+    { label: 'Favorites', href: '/favorites', isRoute: true },
+    { label: 'Login', href: '/login', isRoute: true },
 ];
 
 const DEFAULT_SOCIALS = [
