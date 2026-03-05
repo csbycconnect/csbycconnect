@@ -3,6 +3,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
 import ShuffleText from '../components/shared/ShuffleText';
+import BackButton from '../components/shared/BackButton';
 
 export default function Login() {
     const [tab, setTab] = useState('student'); // 'student' | 'admin'
@@ -27,6 +28,7 @@ export default function Login() {
         <div style={{ position: 'relative', minHeight: '100vh' }}>
             <Navbar />
             <main style={{ maxWidth: '560px', margin: '0 auto', padding: '0 2.5rem 5rem' }}>
+                <BackButton />
 
                 <AnimateOnScroll animationClass="animate-slide-up" delay={0.1} threshold={0.05}>
                     <div style={{ marginBottom: '2.5rem', borderBottom: '2px solid var(--c-white)', paddingBottom: '1rem' }}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -6,12 +6,23 @@ import ArticleList from '../components/home/ArticleList';
 import WelcomeHero from '../components/home/WelcomeHero';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
 import ShuffleText from '../components/shared/ShuffleText';
+import { useAuth } from '../context/AuthContext';
+import AuthGateModal from '../components/shared/AuthGateModal';
 import '../styles/index.css';
 import '../styles/components.css';
 
 export default function Home() {
+    const { user } = useAuth();
+    const [showGate, setShowGate] = useState(false);
+
+    const handleTransmission = () => {
+        if (!user) { setShowGate(true); return false; }
+        return true;
+    };
+
     return (
         <div>
+            {showGate && <AuthGateModal action="send a message" onClose={() => setShowGate(false)} />}
             <Navbar />
 
             <main className="main-layout-full" style={{ position: 'relative', zIndex: 10, maxWidth: '1400px', margin: '0 auto', padding: '0 2.5rem' }}>
@@ -146,7 +157,9 @@ export default function Home() {
                                             <label style={{ fontFamily: 'var(--font-mono)', fontWeight: '700', textTransform: 'uppercase' }}>Message</label>
                                             <textarea rows={4} placeholder="Your message here..." style={{ padding: '1rem', border: '2px solid var(--c-black)', fontFamily: 'var(--font-mono)', backgroundColor: '#f9f9f9', outline: 'none', resize: 'vertical' }}></textarea>
                                         </div>
-                                        <button type="button" className="explore-btn" style={{ alignSelf: 'flex-start', marginTop: '1rem' }}><ShuffleText text="SEND TRANSMISSION" /></button>
+                                        <button type="button" className="explore-btn" style={{ alignSelf: 'flex-start', marginTop: '1rem' }}
+                                            onClick={handleTransmission}
+                                        ><ShuffleText text="SEND TRANSMISSION" /></button>
                                     </form>
 
                                 </div>

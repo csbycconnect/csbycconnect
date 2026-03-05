@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StaggeredMenu from '../shared/StaggeredMenu';
 import ShuffleText from '../shared/ShuffleText';
 import FloatingLines from '../shared/FloatingLines';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import AuthGateModal from '../shared/AuthGateModal';
 
 export default function WelcomeHero() {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const [showGate, setShowGate] = useState(false);
+
+    const handleWriteForUs = (e) => {
+        e.preventDefault();
+        if (user) {
+            navigate('/write-for-us');
+        } else {
+            setShowGate(true);
+        }
+    };
+
     return (
         <div className="welcome-hero-wrapper" style={{ position: 'relative', width: '100%', marginBottom: '4rem' }}>
+            {showGate && <AuthGateModal action="write for us" onClose={() => setShowGate(false)} />}
             <div className="article-wrapper" style={{ minHeight: '500px' }}>
                 <div className="article-shadow" style={{ top: '15px', left: '15px' }}></div>
                 <div className="article-card" style={{ padding: 0, position: 'relative', overflow: 'visible', minHeight: '500px', display: 'flex', alignItems: 'center', backgroundColor: 'var(--c-dark-blue)', border: 'none' }}>
@@ -39,6 +56,7 @@ export default function WelcomeHero() {
                         </p>
                         <a
                             href="/write-for-us"
+                            onClick={handleWriteForUs}
                             style={{
                                 display: 'inline-block',
                                 fontFamily: 'var(--font-mono)',

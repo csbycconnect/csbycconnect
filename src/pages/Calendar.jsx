@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
+import BackButton from '../components/shared/BackButton';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTH_NAMES = [
@@ -139,6 +140,7 @@ export default function Calendar() {
         <div style={{ position: 'relative', minHeight: '100vh' }}>
             <Navbar />
             <main style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2.5rem 5rem' }}>
+                <BackButton />
 
                 <AnimateOnScroll animationClass="animate-slide-up" delay={0.1} threshold={0.05}>
                     <div style={{ marginBottom: '3rem', borderBottom: '2px solid var(--c-white)', paddingBottom: '1rem' }}>

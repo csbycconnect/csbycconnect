@@ -12,7 +12,13 @@ import ByteboardLoader from './components/shared/ByteboardLoader';
 import GlobalBackground from './components/layout/GlobalBackground';
 
 function App() {
-    const [loading, setLoading] = useState(true);
+    // Show the loader only once per browser session (not on every navigation).
+    // sessionStorage persists within the tab but clears on close/refresh of a new tab.
+    const [loading, setLoading] = useState(() => {
+        const alreadyShown = sessionStorage.getItem('bb_loader_shown');
+        const isWriteForUs = window.location.pathname === '/write-for-us';
+        return !alreadyShown && !isWriteForUs;
+    });
 
     return (
         <>
@@ -34,7 +40,7 @@ function App() {
             </Router>
 
             {/* Loader overlaid on top — fades out to reveal the site behind */}
-            {loading && <ByteboardLoader onComplete={() => setLoading(false)} />}
+            {loading && <ByteboardLoader onComplete={() => { sessionStorage.setItem('bb_loader_shown', '1'); setLoading(false); }} />}
         </>
     );
 }

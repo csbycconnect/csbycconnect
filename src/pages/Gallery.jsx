@@ -1,6 +1,9 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import ShuffleText from '../components/shared/ShuffleText';
+import BackButton from '../components/shared/BackButton';
+import { useAuth } from '../context/AuthContext';
+import AuthGateModal from '../components/shared/AuthGateModal';
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -426,13 +429,25 @@ export default function Gallery() {
         setSearch('');
     };
 
-    const shareTarget = modal ? modal.photo : ALL_PHOTOS.find(p => sel.has(p.id));
+    const { user } = useAuth();
+    const [showGate, setShowGate] = useState(false);
+    const [gateAction, setGateAction] = useState('share or download photos');
+
+    const requireAuth = (action, fn) => {
+        if (!user) { setGateAction(action); setShowGate(true); return; }
+        fn();
+    };
+
     const activeFolderLabel = activeFolder === 'all' ? 'All Photos' : FOLDERS.find(f => f.id === activeFolder)?.label;
+
+    const shareTarget = modal ? modal.photo : ALL_PHOTOS.find(p => sel.has(p.id));
 
     return (
         <div style={S.page(navbarHidden)}>
+            {showGate && <AuthGateModal action={gateAction} onClose={() => setShowGate(false)} />}
             <Navbar />
             <main style={S.explorer(navbarHidden)}>
+                <BackButton />
                 <div style={S.window(navbarHidden)}>
 
                     {/* ── Title Bar ── */}
@@ -548,7 +563,7 @@ export default function Gallery() {
                                     <div style={{ position: 'relative' }}>
                                         <button
                                             style={{ ...S.iconBtn(sel.size > 0), opacity: sel.size > 0 ? 1 : 0.38, cursor: sel.size > 0 ? 'pointer' : 'default' }}
-                                            onClick={() => sel.size > 0 && setShareOpen(true)}
+                                            onClick={() => sel.size > 0 && requireAuth('share photos', () => setShareOpen(true))}
                                             title={sel.size > 0 ? `Share ${sel.size} photo${sel.size > 1 ? 's' : ''}` : 'Select photos to share'}
                                         >↑</button>
                                         {sel.size > 0 && (
@@ -608,7 +623,7 @@ export default function Gallery() {
             </main>
 
             {modal && (
-                <PhotoModal modal={modal} photos={photos} onClose={() => setModal(null)} onNavigate={gotoModal} onShare={() => setShareOpen(true)} />
+                <PhotoModal modal={modal} photos={photos} onClose={() => setModal(null)} onNavigate={gotoModal} onShare={() => requireAuth('share photos', () => setShareOpen(true))} />
             )}
             {shareOpen && shareTarget && (
                 <ShareModal count={sel.size > 0 ? sel.size : 1} targetUrl={shareTarget.src} targetName={shareTarget.title} onClose={() => setShareOpen(false)} />

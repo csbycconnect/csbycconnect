@@ -1,12 +1,14 @@
 import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import BackButton from '../components/shared/BackButton';
 
 export default function Team() {
     return (
         <div>
             <Navbar />
             <main className="main-layout" style={{ minHeight: '60vh', padding: '4rem 2rem' }}>
+                <BackButton />
                 <h1 style={{ color: 'var(--c-white)' }}>Team (Coming Soon)</h1>
             </main>
             <Footer />

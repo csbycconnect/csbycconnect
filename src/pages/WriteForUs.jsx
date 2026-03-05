@@ -3,6 +3,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import ShuffleText from '../components/shared/ShuffleText';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
+import BackButton from '../components/shared/BackButton';
 
 // ─── OPTIONS ──────────────────────────────────────────────────────────────────
 const CATEGORIES = [
@@ -140,6 +141,7 @@ export default function WriteForUs() {
             <div style={{ position: 'relative', minHeight: '100vh' }}>
                 <Navbar />
                 <main style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 2.5rem 6rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '70vh' }}>
+                    <BackButton />
                     <div style={{ maxWidth: 580, width: '100%' }}>
                         <div style={{ background: '#fff', border: '2px solid #000', boxShadow: '12px 12px 0 #f7d000', overflow: 'hidden' }}>
                             {/* Success header bar */}
@@ -192,6 +194,7 @@ export default function WriteForUs() {
         <div style={{ position: 'relative', minHeight: '100vh' }}>
             <Navbar />
             <main style={{ maxWidth: 1100, margin: '0 auto', padding: '0 2.5rem 6rem', position: 'relative', zIndex: 10 }}>
+                <BackButton />
 
                 {/* Page Header */}
                 <AnimateOnScroll animationClass="animate-slide-up" delay={0.05} threshold={0.02}>

@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimateOnScroll from '../components/shared/AnimateOnScroll';
 import { Heart } from 'lucide-react';
 import ShuffleText from '../components/shared/ShuffleText';
+import BackButton from '../components/shared/BackButton';
+import { useAuth } from '../context/AuthContext';
+import AuthGateModal from '../components/shared/AuthGateModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function Favorites() {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const [showGate, setShowGate] = useState(false);
+
+    const handleFavorite = (e) => {
+        e.preventDefault();
+        if (!user) { setShowGate(true); } else { navigate('/blogs'); }
+    };
+
     return (
         <div style={{ position: 'relative', minHeight: '100vh' }}>
+            {showGate && <AuthGateModal action="mark articles as favourites" onClose={() => setShowGate(false)} />}
             <Navbar />
             <main style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2.5rem 5rem' }}>
+                <BackButton />
 
                 <AnimateOnScroll animationClass="animate-slide-up" delay={0.1} threshold={0.05}>
                     <div style={{ marginBottom: '3rem', borderBottom: '2px solid var(--c-white)', paddingBottom: '1rem' }}>
@@ -55,6 +70,7 @@ export default function Favorites() {
                             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5rem' }}>
                                 <a
                                     href="/blogs"
+                                    onClick={handleFavorite}
                                     style={{
                                         fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '0.85rem',
                                         textTransform: 'uppercase', textDecoration: 'none',

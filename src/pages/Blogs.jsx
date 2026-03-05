@@ -2,6 +2,9 @@ import React, { useState, useMemo } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import AnimatedList from '../components/blog/AnimatedList';
+import BackButton from '../components/shared/BackButton';
+import { useAuth } from '../context/AuthContext';
+import AuthGateModal from '../components/shared/AuthGateModal';
 
 const ALL_POSTS = [
     {
@@ -95,14 +98,20 @@ export default function Blogs() {
     const activeFilterCount = [selectedAuthor, selectedCategory, selectedReadTime !== null ? true : null]
         .filter(Boolean).length + (sortBy !== 'recent' ? 1 : 0);
 
+    const { user } = useAuth();
+    const [showGate, setShowGate] = useState(false);
+
     const handlePostSelect = (post, index) => {
+        if (!user) { setShowGate(true); return; }
         console.log(`Selected post: ${post.title} at index ${index}`);
     };
 
     return (
         <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+            {showGate && <AuthGateModal action="view and comment on articles" onClose={() => setShowGate(false)} />}
             <Navbar />
             <main className="blog-page-container">
+                <BackButton />
 
                 {/* ── Page Header ── */}
                 <div className="blog-page-header">
