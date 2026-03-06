@@ -6,8 +6,14 @@ import ShuffleText from '../components/shared/ShuffleText';
 import BackButton from '../components/shared/BackButton';
 
 export default function Login() {
+    // Read optional ?register query parameter
+    const queryParams = new URLSearchParams(window.location.search);
+    const initialRegisterMode = queryParams.get('register') === 'true';
+
     const [tab, setTab] = useState('student'); // 'student' | 'admin'
-    const [studentForm, setStudentForm] = useState({ email: '', password: '' });
+    const [isRegisterMode, setIsRegisterMode] = useState(initialRegisterMode);
+
+    const [studentForm, setStudentForm] = useState({ name: '', email: '', password: '' });
     const [adminForm, setAdminForm] = useState({ username: '', password: '', secretKey: '' });
     const [showStudentPw, setShowStudentPw] = useState(false);
     const [showAdminPw, setShowAdminPw] = useState(false);
@@ -33,10 +39,10 @@ export default function Login() {
                 <AnimateOnScroll animationClass="animate-slide-up" delay={0.1} threshold={0.05}>
                     <div style={{ marginBottom: '2.5rem', borderBottom: '2px solid var(--c-white)', paddingBottom: '1rem' }}>
                         <h1 className="serif-heading" style={{ color: 'var(--c-white)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
-                            Login<span style={{ color: 'var(--c-yellow)' }}>.</span>
+                            {tab === 'student' && isRegisterMode ? 'Register' : 'Login'}<span style={{ color: 'var(--c-yellow)' }}>.</span>
                         </h1>
                         <p style={{ fontFamily: 'var(--font-mono)', color: 'rgba(255,255,255,0.6)', marginTop: '0.75rem', fontSize: '0.9rem' }}>
-                            Access your ByteBoard account.
+                            {tab === 'student' && isRegisterMode ? 'Create a new ByteBoard account.' : 'Access your ByteBoard account.'}
                         </p>
                     </div>
                 </AnimateOnScroll>
@@ -77,6 +83,21 @@ export default function Login() {
                             {/* Student Form */}
                             {tab === 'student' && (
                                 <form onSubmit={handleStudentSubmit} style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                    {isRegisterMode && (
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                            <label style={labelStyle}>Full Name</label>
+                                            <input
+                                                type="text"
+                                                required
+                                                placeholder="John Doe"
+                                                value={studentForm.name}
+                                                onChange={e => setStudentForm(p => ({ ...p, name: e.target.value }))}
+                                                style={inputStyle}
+                                                onFocus={e => e.target.style.boxShadow = '4px 4px 0 var(--c-yellow)'}
+                                                onBlur={e => e.target.style.boxShadow = 'none'}
+                                            />
+                                        </div>
+                                    )}
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                                         <label style={labelStyle}>Student Email</label>
                                         <input
@@ -106,14 +127,20 @@ export default function Login() {
                                             <button type="button" onClick={() => setShowStudentPw(v => !v)} style={eyeBtnStyle}>{showStudentPw ? '🙈' : '👁'}</button>
                                         </div>
                                     </div>
-                                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                        <a href="#" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#555', textDecoration: 'underline' }}>Forgot password?</a>
-                                    </div>
+                                    {!isRegisterMode && (
+                                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                            <a href="#" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#555', textDecoration: 'underline' }}>Forgot password?</a>
+                                        </div>
+                                    )}
                                     <button type="submit" style={submitBtnStyle}>
-                                        <ShuffleText text="Login as Student →" />
+                                        <ShuffleText text={isRegisterMode ? "Register as Student →" : "Login as Student →"} />
                                     </button>
                                     <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#555', textAlign: 'center' }}>
-                                        No account? <a href="#" style={{ color: 'var(--c-black)', fontWeight: 700 }}>Contact the editorial board</a>
+                                        {isRegisterMode ? (
+                                            <>Already have an account? <button type="button" onClick={() => setIsRegisterMode(false)} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--c-black)', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline' }}>Login here</button></>
+                                        ) : (
+                                            <>No account? <button type="button" onClick={() => setIsRegisterMode(true)} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--c-black)', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline' }}>Register here</button></>
+                                        )}
                                     </p>
                                 </form>
                             )}

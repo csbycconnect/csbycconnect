@@ -8,6 +8,8 @@ import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import Gallery from './pages/Gallery';
 import WriteForUs from './pages/WriteForUs';
+import CSConnect from './pages/CSConnect';
+import FacultyProfile from './pages/FacultyProfile';
 import ByteboardLoader from './components/shared/ByteboardLoader';
 import GlobalBackground from './components/layout/GlobalBackground';
 
@@ -36,6 +38,8 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/write-for-us" element={<WriteForUs />} />
+                    <Route path="/cs-connect" element={<CSConnect />} />
+                    <Route path="/cs-connect/:id" element={<FacultyProfile />} />
                 </Routes>
             </Router>
 

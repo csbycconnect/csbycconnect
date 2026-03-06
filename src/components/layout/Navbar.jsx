@@ -28,20 +28,16 @@ export default function Navbar() {
             <div className="nav-shadow"></div>
             <nav className="brutal-navbar">
                 <div className="logo-container">
-                    <div className="logo-img">
-                        <div style={{ width: '100%', height: '100%', borderRadius: '50%', backgroundColor: '#eee', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '8px' }}>LOGO</div>
-                    </div>
-                    <div>
-                        <div className="logo-text">CHRIST</div>
-                        <div className="logo-subtext">YESHWANTHPUR</div>
-                    </div>
+                    <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                        <img src="/christ-logo.jpg" alt="CHRIST University Logo" style={{ height: '55px', objectFit: 'contain' }} />
+                    </Link>
                 </div>
 
                 <div className="nav-links">
                     <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
                     <Link to="/blogs" className={location.pathname.startsWith('/blogs') ? 'active' : ''}>Blog</Link>
                     <Link to="/gallery" className={location.pathname.startsWith('/gallery') ? 'active' : ''}>Gallery</Link>
-                    <a href="#">CS-Connect</a>
+                    <Link to="/cs-connect" className={location.pathname.startsWith('/cs-connect') ? 'active' : ''}>CS-Connect</Link>
                 </div>
 
                 {/* ── Profile / Login area ─────────────────────────────── */}
@@ -151,21 +147,47 @@ export default function Navbar() {
                             )}
                         </>
                     ) : (
-                        /* Not logged in — show Login link */
-                        <Link
-                            to="/login"
-                            style={{
-                                fontFamily: 'Space Mono, monospace', fontWeight: 700,
-                                fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em',
-                                color: 'var(--c-black)', textDecoration: 'none',
-                                background: 'var(--c-yellow)', border: '2px solid var(--c-black)',
-                                padding: '0.35rem 0.85rem',
-                                boxShadow: '3px 3px 0 #000',
-                                transition: 'all 0.1s',
-                            }}
-                        >
-                            Login
-                        </Link>
+                        /* Not logged in — show Login and Register links */
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            <Link
+                                to="/login"
+                                style={{
+                                    fontFamily: 'Space Mono, monospace', fontWeight: 700,
+                                    fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em',
+                                    color: 'var(--c-white)', textDecoration: 'none',
+                                    background: 'transparent',
+                                    padding: '0.35rem 0',
+                                    transition: 'all 0.1s',
+                                    borderBottom: '2px solid transparent'
+                                }}
+                                onMouseEnter={e => e.target.style.borderBottom = '2px solid var(--c-yellow)'}
+                                onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}
+                            >
+                                Login
+                            </Link>
+                            <Link
+                                to="/login?register=true"
+                                style={{
+                                    fontFamily: 'Space Mono, monospace', fontWeight: 700,
+                                    fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em',
+                                    color: 'var(--c-black)', textDecoration: 'none',
+                                    background: 'var(--c-yellow)', border: '2px solid var(--c-black)',
+                                    padding: '0.35rem 0.85rem',
+                                    boxShadow: '3px 3px 0 #000',
+                                    transition: 'all 0.1s',
+                                }}
+                                onMouseEnter={e => {
+                                    e.target.style.transform = 'translate(-2px, -2px)';
+                                    e.target.style.boxShadow = '5px 5px 0 #000';
+                                }}
+                                onMouseLeave={e => {
+                                    e.target.style.transform = 'translate(0, 0)';
+                                    e.target.style.boxShadow = '3px 3px 0 #000';
+                                }}
+                            >
+                                Register
+                            </Link>
+                        </div>
                     )}
                 </div>
             </nav>

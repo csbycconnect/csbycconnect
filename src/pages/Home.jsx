@@ -135,11 +135,11 @@ export default function Home() {
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                                 <div style={{ width: '40px', height: '40px', backgroundColor: 'var(--c-black)', color: 'var(--c-white)', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'var(--font-mono)', fontWeight: 'bold' }}>@</div>
-                                                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: '700' }}>editorial@byteboard.cs</span>
+                                                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: '700' }}>csbyc.connect@christuniversity.in</span>
                                             </div>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                                 <div style={{ width: '40px', height: '40px', backgroundColor: 'var(--c-black)', color: 'var(--c-white)', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'var(--font-mono)', fontWeight: 'bold' }}>📍</div>
-                                                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: '700' }}>CS Department, Block A</span>
+                                                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: '700' }}>CS Department, Block B, 2nd Floor</span>
                                             </div>
                                         </div>
                                     </div>
