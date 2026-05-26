@@ -1,4 +1,4 @@
-# ByteBoard 📰
+# ByteBoard 
 
 > The official editorial platform of the CS Department at CHRIST (Deemed to be University), Yeshwanthpur — built with React, Vite, and a brutalist design aesthetic.
 
